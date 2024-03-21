@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: SodoSans-Regular;
+  src: url("./assets/fonts/SoDoSans-Regular.woff2");
+}
+
+@font-face {
+  font-family: SodoSans-Light;
+  src: url("./assets/fonts/SoDoSans-Light.woff2");
+}
+
+@font-face {
+  font-family: SodoSans-Bold;
+  src: url("./assets/fonts/SoDoSans-Bold.woff2");
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -9,9 +24,27 @@
   font-weight: 400;
 
   color: black;
+  overflow-x: hidden;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.label {
+  font-size: 25px;
+  font-family: SodoSans-Bold;
+}
+
+.desc {
+  font-family: SodoSans-Light;
+}
+
+.reg {
+  font-family: SodoSans-Regular;
+}
+
+.label-2 {
+  font-family: SodoSans-Bold;
 }

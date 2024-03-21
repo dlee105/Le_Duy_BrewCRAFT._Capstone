@@ -4,3 +4,65 @@
   flex-direction: column;
   position: relative;
 }
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.drop-in {
+  animation: drop-in 1s ease 300ms backwards;
+}
+
+.drop-in-2 {
+  animation: drop-in 2000ms ease 1000ms backwards;
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+p {
+  color: #f5f5dc;
+  text-shadow: rgb(0, 0, 0) 1px 0 1px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.divider::before {
+  content: "";
+  flex: 1;
+  border: none;
+  background-color: #f5f5dc;
+  height: 1px;
+  width: 50%;
+  align-content: center;
+  justify-content: center;
+}
+
+.divider::after {
+  content: "";
+  flex: 1;
+  border: none;
+  background-color: #f5f5dc;
+  height: 1px;
+  width: 50%;
+  align-content: center;
+  justify-content: center;
+}
+
+.divider-text {
+  width: auto;
+  padding: 0 1rem;
+}
