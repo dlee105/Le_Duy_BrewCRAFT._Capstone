@@ -60,7 +60,7 @@ function HeroContent() {
           </div>
           <Button
             variant="outlined"
-            className="w-[250px] rounded-full text-cp-light border-transparent hover:!border-cp-light hover:!opacity-100 label-2 text-xl duration-300 hover:backdrop-blur-md"
+            className=" w-[250px] rounded-full text-cp-light border-transparent hover:!border-cp-light hover:!opacity-100 label-2 text-xl duration-300 hover:backdrop-blur-md"
           >
             SHOP NOW
           </Button>

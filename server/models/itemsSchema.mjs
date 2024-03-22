@@ -18,6 +18,10 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
 itemSchema.index({ itemType: 1 });
