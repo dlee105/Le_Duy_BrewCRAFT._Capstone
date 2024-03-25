@@ -7,9 +7,12 @@ import img1 from "../../../assets/img1.jpg";
 import img2 from "../../../assets/img2.jpg";
 import landingVid from "../../../assets/landingVid.mp4";
 
+import { useNavigate } from "react-router-dom";
+
 const API_KEY = "edNfqHU612bcbIFW3z7pBQ==KZcCGnlmrqJpWgcp";
 
 function HeroContent() {
+  const navigate = useNavigate();
   const [quote, setQuote] = useState("");
 
   useEffect(() => {
@@ -61,6 +64,7 @@ function HeroContent() {
           <Button
             variant="outlined"
             className=" w-[250px] rounded-full text-cp-light border-transparent hover:!border-cp-light hover:!opacity-100 label-2 text-xl duration-300 hover:backdrop-blur-md"
+            onClick={() => navigate("/shop")}
           >
             SHOP NOW
           </Button>

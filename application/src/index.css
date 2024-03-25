@@ -48,3 +48,10 @@
 .label-2 {
   font-family: SodoSans-Bold;
 }
+
+.home-page-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+}

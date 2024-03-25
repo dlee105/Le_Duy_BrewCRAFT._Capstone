@@ -13,7 +13,10 @@ import {
   Card,
 } from "@material-tailwind/react";
 
+import { useNavigate } from "react-router-dom";
+
 function StickyNavBar() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoHoverState, setLogoHoverState] = useState(false);
 
@@ -67,6 +70,7 @@ function StickyNavBar() {
       <div
         className="absolute w-32 h-32 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all ease-in-out"
         onMouseOver={handleLogoHover}
+        onClick={() => navigate("/")}
       >
         <img src={logo} alt="" className="z-[0]" />
         {/* {logoHoverState ? (
