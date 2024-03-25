@@ -4,7 +4,13 @@ import Item from "../models/itemsSchema.mjs";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  res.json("Hi");
+  // res.json({ hi: "hi" });
+  try {
+    const allItems = await Item.find();
+    res.json(allItems);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 async function getItemId(req, res, next) {
