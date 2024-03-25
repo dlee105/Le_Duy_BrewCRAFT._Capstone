@@ -6,14 +6,77 @@ import logo2 from "../../../assets/brewCraftLogo2.png";
 
 import {
   Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  IconButton,
-  Card,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  ThemeProvider,
 } from "@material-tailwind/react";
 
 import { useNavigate } from "react-router-dom";
+
+const customMenu = {
+  menu: {
+    defaultProps: {
+      placement: "bottom",
+      offset: 5,
+      dismiss: {
+        itemPress: true,
+      },
+      animate: {
+        unmount: {},
+        mount: {},
+      },
+      lockScroll: false,
+    },
+    styles: {
+      base: {
+        menu: {
+          bg: "bg-cp-light",
+          minWidth: "min-w-[180px]",
+          p: "p-1",
+          border: "border border-cp-md",
+          borderRadius: "rounded-md",
+          boxShadow: "shadow-lg shadow-blue-gray-500/10",
+          fontFamily: "font-sans",
+          fontSize: "text-sm",
+          fontWeight: "font-medium",
+          color: "text-blue-gray-500",
+          overflow: "overflow-auto",
+          outline: "focus:outline-none",
+          zIndex: "z-[999]",
+        },
+        item: {
+          initial: {
+            display: "block",
+            width: "w-full",
+            pt: "pt-[9px]",
+            pb: "pb-2",
+            px: "px-3",
+            borderRadius: "rounded-none",
+            textAlign: "text-start",
+            lightHeight: "leading-tight",
+            cursor: "cursor-pointer",
+            userSelect: "select-none",
+            transition: "transition-all",
+            bg: "hover:bg-cp-md ",
+            color: "text-cp-dark hover:text-cp-light",
+            outline: "outline-none",
+          },
+          disabled: {
+            opacity: "opacity-50",
+            cursor: "cursor-not-allowed",
+            pointerEvents: "pointer-events-none",
+            userSelect: "select-none",
+            bg: "hover:bg-transparent focus:bg-transparent active:bg-transparent",
+            color:
+              "hover:text-blue-gray-500 focus:text-blue-gray-500 active:text-blue-gray-500",
+          },
+        },
+      },
+    },
+  },
+};
 
 function StickyNavBar() {
   const navigate = useNavigate();
@@ -142,7 +205,16 @@ function NavBarIconGroup() {
     <div className="flex gap-x-5">
       {SEARCH_SVG}
       {CART_SVG}
-      {PROFILE_SVG}
+      <ThemeProvider value={customMenu}>
+        <Menu>
+          <MenuHandler>{PROFILE_SVG}</MenuHandler>
+          <MenuList>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>About</MenuItem>
+            <MenuItem>Sign Out</MenuItem>
+          </MenuList>
+        </Menu>
+      </ThemeProvider>
     </div>
   );
 }

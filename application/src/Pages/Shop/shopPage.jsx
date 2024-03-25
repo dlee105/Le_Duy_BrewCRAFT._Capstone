@@ -30,6 +30,7 @@ const SEARCH_ICON = (
 
 function Shop() {
   const [currentItems, setCurrentItems] = useState([]);
+  const [filter, setFilter] = useState([]);
 
   const getALLItems = async () => {
     const { data } = await axios.get("http://localhost:3000/api/items");
@@ -37,9 +38,32 @@ function Shop() {
     setCurrentItems((prev) => [...data]);
   };
 
+  const getFeaturedItems = async () => {};
+
   useEffect(() => {
     getALLItems();
-  });
+  }, []);
+
+  const addToFilter = (query) => {
+    if (filter.includes(query)) {
+      let temp = [...filter];
+      temp.splice(temp.indexOf(query), 1);
+      setFilter((prev) => [...temp]);
+    } else setFilter((prev) => [...prev, query]);
+    // console.log(filter);
+  };
+
+  const handleFilter = async () => {
+    let res = [];
+
+    for (let el of filter) {
+      const { data } = await axios.get(
+        "http://localhost:3000/api/items/find/" + el
+      );
+      res = [...res, ...data];
+    }
+    setCurrentItems((prev) => [...res]);
+  };
 
   return (
     <div className="home-page-wrapper bg-cp-light w-full h-full">
@@ -64,9 +88,6 @@ function Shop() {
           <div className="hover:outline outline-1 flex justify-center items-center px-3">
             <a href="">Asia</a>
           </div>
-          <div className="hover:outline outline-1 flex justify-center items-center px-3">
-            <a href="">Custom</a>
-          </div>
         </div>
         <input
           type="search"
@@ -83,31 +104,53 @@ function Shop() {
       </div>
       <div className="flex py-10 border-b border-cp-dark">
         <div className="md:w-1/4 lg:w-1/8 p-1 bg-cp-light ">
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <div className="text-lg font-medium px-3 pt-2">Popular</div>
             <Checkbox color="green" label="Tea" className="" />
             <Checkbox color="green" label="Coffee" />
             <Checkbox color="green" label="Energy Drinks" />
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <div className="text-lg font-medium px-3 pt-2 ">Nationality</div>
-            <Checkbox color="green" label="Columbia" className="" />
-            <Checkbox color="green" label="Mexico" />
-            <Checkbox color="green" label="USA" />
-            <Checkbox color="green" label="Japan" />
-            <Checkbox color="green" label="Vietnam" />
-            <Checkbox color="green" label="Italy" />
-            <Checkbox color="green" label="Brazil" />
+            <Checkbox
+              color="green"
+              label="Colombia"
+              className=""
+              onClick={() => addToFilter("Colombia")}
+            />
+            <Checkbox
+              color="green"
+              label="Mexico"
+              onClick={() => addToFilter("Mexico")}
+            />
+            <Checkbox
+              color="green"
+              label="USA"
+              onClick={() => addToFilter("USA")}
+            />
+            <Checkbox
+              color="green"
+              label="Japan"
+              onClick={() => addToFilter("Japan")}
+            />
+            <Checkbox
+              color="green"
+              label="Vietnam"
+              onClick={() => addToFilter("Vietnam")}
+            />
+            <Checkbox
+              color="green"
+              label="Italy"
+              onClick={() => addToFilter("Italy")}
+            />
+            <Checkbox
+              color="green"
+              label="Brazil"
+              onClick={() => addToFilter("Brazil")}
+            />
           </div>
           <div className="flex p-3">
-            <Button
-              color="amber"
-              size="sm"
-              className=""
-              onClick={() => {
-                console.log(currentItems);
-              }}
-            >
+            <Button color="amber" size="sm" className="" onClick={handleFilter}>
               Apply
             </Button>
           </div>
