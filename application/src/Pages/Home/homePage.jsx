@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles/homePage.css";
 
-import StickyNavBar from "./components/StickyNavBar";
-import HeroContent from "./components/HeroContent";
-import SectionDivider from "./components/sectionDivider";
-import FeaturesContent from "./components/FeaturesContent";
-import FooterWithLogo from "./components/FooterWithLogo";
+import StickyNavBar from "../components/StickyNavBar";
+import HeroContent from "../components/HeroContent";
+import SectionDivider from "../components/sectionDivider";
+import FeaturesContent from "../components/FeaturesContent";
+import FooterWithLogo from "../components/FooterWithLogo";
 
 import { Card, Typography } from "@material-tailwind/react";
 

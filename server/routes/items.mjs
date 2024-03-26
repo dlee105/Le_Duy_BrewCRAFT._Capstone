@@ -3,6 +3,7 @@ import Item from "../models/itemsSchema.mjs";
 
 const router = express.Router();
 
+// CRUD for Items
 router.get("/", async (req, res) => {
   // res.json({ hi: "hi" });
   try {
@@ -21,6 +22,40 @@ router.get("/:id", getItemId, async (req, res) => {
   res.send(res.item);
 });
 
+router.patch("/:id", getUserId, async (req, res) => {
+  if (req.body.itemName != null) {
+    res.item.itemName = req.body.itemName;
+  }
+  if (req.body.itemType != null) {
+    res.item.itemType = req.body.itemType;
+  }
+  if (req.body.description != null) {
+    res.item.description = req.body.description;
+  }
+  if (req.body.nationality != null) {
+    res.item.nationality = req.body.nationality;
+  }
+  if (req.body.price != null) {
+    res.item.price = req.body.price;
+  }
+  try {
+    const updatedItem = await res.item.save();
+    res.json(updatedItem);
+  } catch (err) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
+router.delete("/:id", getUserId, async (req, res) => {
+  try {
+    await res.item.deleteOne();
+    res.json({ message: "Item deleted" });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
+// Special API GET req for filtering
 router.get("/find/:query", getItemWithQuery, async (req, res) => {
   res.send(res.item);
 });

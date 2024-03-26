@@ -3,9 +3,8 @@ import "./styles/shopPage.css";
 
 import { Checkbox, Button } from "@material-tailwind/react";
 
-import StickyNavBar from "../Home/components/StickyNavBar";
-import FooterWithLogo from "../Home/components/FooterWithLogo";
-import { GET_ALL_ITEMS } from "../API-HELPERS";
+import StickyNavBar from "../components/StickyNavBar";
+import FooterWithLogo from "../components/FooterWithLogo";
 import axios from "axios";
 
 const PLACEHOLDER_IMG =
@@ -38,7 +37,7 @@ function Shop() {
     setCurrentItems((prev) => [...data]);
   };
 
-  const getFeaturedItems = async () => {};
+  // const getFeaturedItems = async () => {};
 
   useEffect(() => {
     getALLItems();
