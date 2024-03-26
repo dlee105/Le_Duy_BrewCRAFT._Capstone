@@ -1,5 +1,8 @@
 import express from "express";
 import User from "../models/userSchema.mjs";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { check, validationResult } from "express-validator";
 
 const router = express.Router();
 
@@ -13,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-  const user = new users({
+  const user = new User({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
@@ -25,6 +28,21 @@ router.post("/", async (req, res) => {
   try {
     const newUser = await user.save();
     res.status(201).json(newUser);
+
+    const payload = {
+      user: {
+        id: newUser._id,
+      },
+    };
+    jwt.sign(
+      payload,
+      process.env.jwtSecret,
+      { expiresIn: 3600 },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json({ token });
+      }
+    );
   } catch (err) {
     res.status(400).json({ message: err.message, error: "bad user data" });
   }
@@ -70,7 +88,7 @@ router.delete("/:id", getUserId, async (req, res) => {
 async function getUserId(req, res, next) {
   let user;
   try {
-    user = await users.findById(req.params.id);
+    user = await User.findById(req.params.id);
     if (user == null) {
       return res.status(404).json({ message: "Users does not exist" });
     }

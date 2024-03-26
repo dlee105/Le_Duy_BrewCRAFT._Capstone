@@ -22,7 +22,7 @@ router.get("/:id", getItemId, async (req, res) => {
   res.send(res.item);
 });
 
-router.patch("/:id", getUserId, async (req, res) => {
+router.patch("/:id", getItemId, async (req, res) => {
   if (req.body.itemName != null) {
     res.item.itemName = req.body.itemName;
   }
@@ -46,7 +46,7 @@ router.patch("/:id", getUserId, async (req, res) => {
   }
 });
 
-router.delete("/:id", getUserId, async (req, res) => {
+router.delete("/:id", getItemId, async (req, res) => {
   try {
     await res.item.deleteOne();
     res.json({ message: "Item deleted" });
