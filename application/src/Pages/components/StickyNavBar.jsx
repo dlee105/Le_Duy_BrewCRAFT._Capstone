@@ -195,6 +195,18 @@ function StickyNavBar() {
         >
           PROFILE
         </div>
+        <div
+          className="flex justify-center item-center hover:bg-cp-md cursor-pointer py-3"
+          onClick={() => navigate("/login")}
+        >
+          SIGN IN
+        </div>
+        <div
+          className="flex justify-center item-center hover:bg-cp-md cursor-pointer py-3"
+          onClick={() => navigate("/register")}
+        >
+          SIGN UP
+        </div>
       </Drawer>
     </>
   );
