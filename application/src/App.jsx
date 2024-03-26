@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import { Route, Routes, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Home from "./Pages/Home/homePage";
@@ -9,16 +7,6 @@ import Profile from "./Pages/Profile/profilePage";
 
 import Register from "./Pages/UserAuth/Register";
 import Login from "./Pages/UserAuth/Login";
-
-import { useNavigate } from "react-router-dom";
-
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
 
 function App() {
   return (

@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-import axios from "axios";
+// import axios from "axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Login() {
   const onChangeEM = ({ target }) => setEmail(target.value);
   const onChangePW = ({ target }) => setPassword(target.value);
 
-  const handleLogin = async () => {};
+  //   const handleLogin = async () => {};
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-cp-light">
