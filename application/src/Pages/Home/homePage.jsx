@@ -7,6 +7,7 @@ import SectionDivider from "../components/sectionDivider";
 import FeaturesContent from "../components/FeaturesContent";
 import FooterWithLogo from "../components/FooterWithLogo";
 import HighlightSection from "../components/HighlightSection";
+////////////////////////////////////////////////
 
 function Home() {
   return (

@@ -13,11 +13,11 @@ import {
   Drawer,
   Typography,
   IconButton,
-  Button,
 } from "@material-tailwind/react";
 
 import { useNavigate } from "react-router-dom";
 
+// CUSTOM Theme for Material Tailwind
 const customMenu = {
   menu: {
     defaultProps: {

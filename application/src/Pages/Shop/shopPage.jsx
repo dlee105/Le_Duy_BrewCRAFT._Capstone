@@ -30,6 +30,7 @@ const SEARCH_ICON = (
 function Shop() {
   const [currentItems, setCurrentItems] = useState([]);
   const [filter, setFilter] = useState([]);
+  ////////////////////////////////////////////////
 
   const getALLItems = async () => {
     const { data } = await axios.get("http://localhost:3000/api/items");

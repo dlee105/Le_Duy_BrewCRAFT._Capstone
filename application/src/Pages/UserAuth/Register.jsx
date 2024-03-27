@@ -25,6 +25,9 @@ function Register() {
   const onChangeUN = ({ target }) => setUsername(target.value);
   const onChangeEM = ({ target }) => setEmail(target.value);
   const onChangePW = ({ target }) => setPassword(target.value);
+  ////////////////////////////////////////////////
+
+  // External Quote API call
 
   const handleRegister = async () => {
     const body = {
